@@ -65,7 +65,7 @@ export const getKeyboardLetters = (
         keyboardLetters[letter] = status;
       } else if (
         keyboardLetters[letter] === LetterStatus.MISPLACED &&
-        status === LetterStatus.WRONG
+        status === LetterStatus.CORRECT
       ) {
         keyboardLetters[letter] = status;
       }

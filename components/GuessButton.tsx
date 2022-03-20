@@ -14,7 +14,7 @@ const GuessButton: React.FC<Props> = ({ onClick, disabled, done }) => {
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "w-full h-16 text-4xl text-gray-600 font-medium rounded-xl border-2 cursor-pointer disabled:hover:scale-100 hover:scale-105 transition duration-200",
+        "w-full h-12 md:h-16 text-4xl text-gray-600 font-medium rounded-xl border-2 cursor-pointer disabled:hover:scale-100 hover:scale-105 transition duration-200",
         {
           ["bg-gray-300"]: disabled,
           ["border-gray-400"]: disabled,

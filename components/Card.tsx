@@ -7,7 +7,12 @@ interface Props {
 
 const Card: React.FC<Props> = ({ children, className }) => {
   return (
-    <div className={clsx("p-4 bg-slate-200 rounded-lg shadow-lg", className)}>
+    <div
+      className={clsx(
+        "p-4 bg-slate-200 rounded-lg shadow-lg max-w-screen-md",
+        className
+      )}
+    >
       {children}
     </div>
   );

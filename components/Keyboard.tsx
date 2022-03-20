@@ -20,7 +20,7 @@ const bottomRow = ["Z", "X", "C", "V", "B", "N", "M"];
 const Letter: React.FC<LetterProps> = ({ char, status, appendLetter }) => (
   <div
     className={clsx(
-      "p-1 border rounded-lg select-none text-2xl w-8 h-10 flex items-center justify-center cursor-pointer",
+      "p-1 border rounded-lg select-none text-2xl w-7 md:w-8 flex items-center justify-center cursor-pointer",
       {
         ["bg-gray-500"]: status === LetterStatus.WRONG,
         ["border-gray-600"]: status === LetterStatus.WRONG,

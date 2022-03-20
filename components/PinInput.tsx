@@ -77,13 +77,13 @@ const PinInput: React.FC<Props> = ({
   }, [value]);
 
   return (
-    <form className={clsx("flex gap-4")}>
+    <form className={clsx("flex gap-4 justify-center")}>
       {chars.map((char: string, index: number) => {
         return (
           <input
             key={index}
             className={clsx(
-              "h-20 w-16 rounded-lg text-center text-4xl outline-offset-2 outline-gray-400 text-gray-600",
+              "h-20 w-14 md:w-16 rounded-lg text-center text-4xl outline-offset-2 outline-gray-400 text-gray-600",
               {
                 [`bg-${colors[index]}-300`]: !!colors[index],
               }
