@@ -63,14 +63,21 @@ const Play: NextPage = () => {
 
   const handleAppendLetter = useCallback(
     (letter: string) => {
-      console.log({ letter, currentGuess });
-
       if (currentGuess.length < 5) {
         setCurrentGuess(currentGuess + letter);
       }
     },
     [currentGuess]
   );
+
+  const handleRemoveLastLetter = useCallback(() => {
+    setCurrentGuess(
+      currentGuess
+        .split("")
+        .slice(0, currentGuess.length - 1)
+        .join("")
+    );
+  }, [currentGuess]);
 
   useEffect(() => {
     if (
@@ -191,6 +198,7 @@ const Play: NextPage = () => {
             <Keyboard
               letters={keyboardLetters}
               appendLetter={handleAppendLetter}
+              removeLastLetter={handleRemoveLastLetter}
             />
 
             <Options

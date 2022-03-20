@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import React from "react";
 import { LetterStatus } from "../lib/types/guess";
+import { BsBackspaceFill } from "react-icons/bs";
 
 interface Props {
   letters: Record<string, LetterStatus>;
   appendLetter?: (value: string) => void;
+  removeLastLetter?: () => void;
 }
 
 interface LetterProps {
@@ -40,7 +42,11 @@ const Letter: React.FC<LetterProps> = ({ char, status, appendLetter }) => (
   </div>
 );
 
-const Keyboard: React.FC<Props> = ({ letters, appendLetter }) => {
+const Keyboard: React.FC<Props> = ({
+  letters,
+  appendLetter,
+  removeLastLetter,
+}) => {
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="flex gap-2">
@@ -72,6 +78,13 @@ const Keyboard: React.FC<Props> = ({ letters, appendLetter }) => {
             appendLetter={appendLetter}
           />
         ))}
+
+        <div
+          className="p-1 border rounded-lg select-none text-2xl w-10 flex items-center justify-center cursor-pointer bg-gray-300 border-gray-400"
+          onClick={removeLastLetter}
+        >
+          <BsBackspaceFill />
+        </div>
       </div>
     </div>
   );
