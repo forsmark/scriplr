@@ -10,20 +10,15 @@ export const getGuess = (guess: string, word: string): Guess => {
     {} as Record<string, number>
   );
 
-  return guess.split("").reduce(
+  const firstPass = guess.split("").reduce(
     (guess, letter, index) => {
       let status = LetterStatus.WRONG;
 
-      if (splitWord.includes(letter)) {
-        if (splitWord[index] === letter) {
-          status = LetterStatus.CORRECT;
-          letterFrequency[letter] = letterFrequency[letter] - 1;
-        } else if (letterFrequency[letter] > 0) {
-          letterFrequency[letter] = letterFrequency[letter] - 1;
-          status = LetterStatus.MISPLACED;
-        } else {
-          status = LetterStatus.WRONG;
-        }
+      if (splitWord[index] === letter) {
+        status = LetterStatus.CORRECT;
+        letterFrequency[letter] = letterFrequency[letter] - 1;
+      } else {
+        status = LetterStatus.UNKNOWN;
       }
 
       return {
@@ -33,6 +28,33 @@ export const getGuess = (guess: string, word: string): Guess => {
     },
     { letters: [], status: [] } as Guess
   );
+
+  const secondPass = firstPass.letters.reduce(
+    (guess, letter, index) => {
+      let status = LetterStatus.WRONG;
+
+      if (firstPass.status[index] === LetterStatus.UNKNOWN) {
+        if (splitWord.includes(letter) && letterFrequency[letter] > 0) {
+          status = LetterStatus.MISPLACED;
+          letterFrequency[letter] = letterFrequency[letter] - 1;
+        } else {
+          status = LetterStatus.WRONG;
+        }
+      } else {
+        status = firstPass.status[index];
+      }
+
+      return {
+        letters: [...guess.letters, letter],
+        status: [...guess.status, status],
+      };
+    },
+    { letters: [], status: [] } as Guess
+  );
+
+  console.log({ ...secondPass });
+
+  return secondPass;
 };
 
 export const checkAllowedGuess = (guess: string) => {

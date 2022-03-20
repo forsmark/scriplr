@@ -15,6 +15,7 @@ import Keyboard from "../components/Keyboard";
 import Contacts from "../components/Contacts";
 import Options from "../components/Options";
 import { Transition } from "@headlessui/react";
+import Head from "next/head";
 
 const Play: NextPage = () => {
   const [guesses, setGuesses] = useState<Guess[]>([]);
@@ -108,6 +109,15 @@ const Play: NextPage = () => {
         backgroundAttachment: "fixed",
       }}
     >
+      <Head>
+        <title>scriplr</title>
+        <meta charSet="UTF-8" />
+        <meta name="description" content="Wordle clone" />
+        <meta name="keywords" content="Wordle, Clone, Frontend" />
+        <meta name="author" content="Marc Forsmark Nielsen" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+
       <div className="w-full h-full overflow-y-scroll flex flex-col items-center p-4 gap-4">
         <Card>
           <div className="flex flex-col items-center gap-4">
