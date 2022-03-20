@@ -33,7 +33,7 @@ const Guesses: React.FC<Props> = ({ guesses }) => {
                 <div
                   key={`${guessIndex}-${letterIndex}`}
                   className={clsx(
-                    "h-20 w-16 rounded-lg flex items-center justify-center text-4xl border-2 select-none text-gray-600",
+                    "h-20 w-14 md:w-16 rounded-lg flex items-center justify-center text-4xl border-2 select-none text-gray-600",
                     color.bg,
                     color.border
                   )}

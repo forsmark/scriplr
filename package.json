@@ -1,5 +1,5 @@
 {
-  "name": "wordle",
+  "name": "scriplr",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.5.0",
     "clsx": "^1.1.1",
     "next": "12.1.0",
     "react": "17.0.2",
